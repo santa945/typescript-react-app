@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
-
+import {AppConsumer} from './../../context/AppContext'
 export default class Welcome extends Component {
     render() {
         return (
-            <div>
-                Welcome back
-            </div>
+            <AppConsumer>
+                {
+                    ({username})=>{
+                        return `Welcome back ${username}`
+                    }
+                }
+                
+            </AppConsumer>
         )
     }
 }
