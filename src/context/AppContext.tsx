@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React,{Component, ReactNode} from 'react'
 /**
  * 1.创建一个context：React.createContext()
  * 2.添加默认值：defaultValue={key:str|number|boolen|fn|...}
@@ -9,7 +9,7 @@ import React,{Component} from 'react'
  */
 
  interface IProps{
-
+    children: ReactNode
  }
 
  type IState={
@@ -21,7 +21,7 @@ const defaultValue = {
     username:'',
     signin:()=>{}
 }
-let {Provider,Consumer} = React.createContext(defaultValue)
+let {Provider,Consumer:AppConsumer} = React.createContext(defaultValue)
 
 class AppProvider extends Component<IProps,IState> {
     constructor(props:IProps){
@@ -31,15 +31,28 @@ class AppProvider extends Component<IProps,IState> {
             username:''
         }
     }
+    signIn = ()=>{
+        this.setState({
+            auth:true,
+            username:'John'
+        })
+    }
     render(){
         return (
             <Provider value={{
                 auth:this.state.auth,
-                username:'sss',
-                signin:()=>{}
+                username:this.state.username,
+                signin:()=>this.signIn()
             }}>
-
+                {
+                    this.props.children
+                }
             </Provider>
         )
     }
+}
+
+export {
+    AppProvider,
+    AppConsumer
 }

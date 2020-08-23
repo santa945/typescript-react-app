@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
 import Welcome from './Welcome'
 import Login from './Login'
+import { AppConsumer} from "./../../context/AppContext"
 
 export default class Index extends Component {
     render() {
         return (
-            <div>
-                { true ? <Welcome></Welcome> : <Login></Login> }
-            </div>
+            <AppConsumer>
+                {
+                    ({auth})=>{
+                        return auth ? <Welcome></Welcome> : <Login></Login>
+                    }
+                }
+                
+            </AppConsumer>
         )
     }
 }
