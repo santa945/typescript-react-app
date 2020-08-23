@@ -8,7 +8,6 @@ type Todos = {
 
 let id = 1;
 const mapStateToProps = (state:Todos)=>{
-    console.log('state:',state);
     return {
         todos: state.todos
     }
