@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import User from '../src/pages/users/Index'
+// import User from '../src/pages/users/Index'
 // import {AppProvider} from '../src/context/AppContext'
 import {Provider} from 'react-redux'
 import Store from './store'

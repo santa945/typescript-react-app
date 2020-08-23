@@ -6,9 +6,9 @@ type Todos = {
     todos: Array<ITodo>
 }
 
+let id = 1;
 const mapStateToProps = (state:Todos)=>{
     console.log('state:',state);
-    
     return {
         todos: state.todos
     }
@@ -16,8 +16,12 @@ const mapStateToProps = (state:Todos)=>{
 
 const mapDispatchToProps = (dispatch:Dispatch)=>{
     return {
-        add:()=>{
-            
+        add:(txt:string)=>{
+            dispatch({
+                type:"ADD_TODO",
+                id: id++,
+                text: txt
+            })
         }
     }
 }
