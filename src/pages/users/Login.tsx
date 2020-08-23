@@ -9,7 +9,6 @@ export default class Login extends Component {
                       return <button onClick={signin}>login</button>
                   }
                 }
-                
             </AppConsumer>
         )
     } 
